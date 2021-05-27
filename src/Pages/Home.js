@@ -2,7 +2,9 @@ import React,{useState,useEffect} from "react"
 import firebase from "firebase"
 import {Container} from 'react-bootstrap'
 import Catalogo from "../Components/Catalogo"
+import CardGroup from 'react-bootstrap/CardGroup'
 import AgregarProd from "../Components/AgregarProd"
+import Card from 'react-bootstrap/Card'
 
 function Home(props) {
     
@@ -41,11 +43,11 @@ function Home(props) {
 
         return(
 <Container>
+    
         <div>
-            {/* <AgregarProd/> */}
-            {/* <div>Titulo: {titulo}</div> */}
-                {productos.map(producto=><Catalogo key={producto.id} id={producto.id} data={producto.data()}  />)}
-                {/* <Filtros clickCambiarTitulo={cambiarTitulo} clickFiltrarProducto={filtrarProducto} title={titulo} /> */}
+            <br></br>
+              {productos.map(producto=><Catalogo key={producto.id} id={producto.id} data={producto.data()}  />)}
+               
             </div>
             </Container>
         )

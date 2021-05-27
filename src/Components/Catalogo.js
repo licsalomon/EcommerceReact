@@ -1,6 +1,8 @@
 import React,{Component,useState} from "react"
 import {Link} from "react-router-dom"
 import Card from 'react-bootstrap/Card'
+import CardGroup from 'react-bootstrap/CardGroup'
+import CardColumns from 'react-bootstrap/CardColumns'
 import {Button} from 'react-bootstrap'
 import TpFinalContext from "../Context/tpFinalContext"
 
@@ -18,7 +20,7 @@ const styles = {
 function Catalogo(props){
     const {data,titulo} = props
     const verDetalle = (props.verDetalle!==false?true:false);
-    const extendida = (props.extendida==true?true:false)
+    // const extendida = (props.extendida==true?true:false)
     const id = props.id
     const {price,name,description}=props.data
     const [mensaje,setMensaje]=useState("")
@@ -37,18 +39,21 @@ function Catalogo(props){
         <TpFinalContext.Consumer>
         {
             context=>
+            <CardGroup>
             <Card style={styles.card}>
+                <Card.Header as="h4">{name}</Card.Header>
                 <Card.Body>
-                    <Card.Title>{price} - {name}</Card.Title>
-                    {
-                        extendida && 
-                        <>
+                    <Card.Title>Description: {description}  </Card.Title>
+                    <br></br>
+                    
+                    <Card.Subtitle className="mb-2 text-muted">SKU:{id}</Card.Subtitle> 
+                    <br></br>
+                            
                             <Card.Text>
-                                {description}
+                            ${price}                              
                             </Card.Text>
-                        </>
-                    }
-                    {
+                        
+                  {
                         context.userLogin &&
                         <Button variant="primary" onClick={comprar}>Comprar</Button>
                     }
@@ -61,6 +66,7 @@ function Catalogo(props){
                 </Card.Body>
                 {/* {mensaje} */}
             </Card>
+            </CardGroup>
         }
     
     </TpFinalContext.Consumer>
